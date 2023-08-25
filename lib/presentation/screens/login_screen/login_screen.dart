@@ -20,60 +20,63 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       body: Center(
         child: SingleChildScrollView(
-          padding: const EdgeInsets.symmetric(horizontal:25),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Text(
-                DataValues.loginTitle,
-                style: TextStyle(
-                  color: AppThemeData.primaryColor,
-                  fontSize:
-                  AppThemeData.lightTheme.textTheme.displayMedium!.fontSize,
-                  fontWeight:
-                  AppThemeData
-                      .lightTheme.textTheme.titleLarge!.fontWeight,
+          padding: const EdgeInsets.symmetric(horizontal:20),
+          child: Container(
+            width: MediaQuery.of(context).size.width /2.5,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Text(
+                  DataValues.loginTitle,
+                  style: TextStyle(
+                    color: AppThemeData.primaryColor,
+                    fontSize:
+                    AppThemeData.lightTheme.textTheme.displayMedium!.fontSize,
+                    fontWeight:
+                    AppThemeData
+                        .lightTheme.textTheme.titleLarge!.fontWeight,
+                  ),
                 ),
-              ),
-              Text(
-                DataValues.loginDescription,
-                style: TextStyle(
-                  color: AppThemeData.primaryColor,
-                  fontSize:
-                  AppThemeData.lightTheme.textTheme.titleMedium!.fontSize,
-                  fontWeight: bold,
+                Text(
+                  DataValues.loginDescription,
+                  style: TextStyle(
+                    color: AppThemeData.primaryColor,
+                    fontSize:
+                    AppThemeData.lightTheme.textTheme.titleMedium!.fontSize,
+                    fontWeight: bold,
+                  ),
                 ),
-              ),
-              const SizedBox(
-                height: 40,
-              ),
-              TextFormField(
-                keyboardType: TextInputType.emailAddress,
-                controller: _email,
-                decoration: const InputDecoration(
-                  hintText: DataValues.emailHintAndLabel,
-                  labelText: DataValues.emailHintAndLabel,
+                const SizedBox(
+                  height: 40,
                 ),
-              ),
-              const SizedBox(
-                height: 15,
-              ),
-              TextFormField(
-                obscureText: true,
-                controller: _password,
-                decoration: const InputDecoration(
-                  hintText: DataValues.passwordHintAndLabel,
-                  labelText: DataValues.passwordHintAndLabel,
+                TextFormField(
+                  keyboardType: TextInputType.emailAddress,
+                  controller: _email,
+                  decoration: const InputDecoration(
+                    hintText: DataValues.emailHintAndLabel,
+                    labelText: DataValues.emailHintAndLabel,
+                  ),
                 ),
-              ),
-              const SizedBox(
-                height: 40,
-              ),
-              CustomButton(
-            onPressed: (){},
-            text: DataValues.loginElevatedButtonTitle,
-          ),
-            ],
+                const SizedBox(
+                  height: 15,
+                ),
+                TextFormField(
+                  obscureText: true,
+                  controller: _password,
+                  decoration: const InputDecoration(
+                    hintText: DataValues.passwordHintAndLabel,
+                    labelText: DataValues.passwordHintAndLabel,
+                  ),
+                ),
+                const SizedBox(
+                  height: 40,
+                ),
+                CustomButton(
+              onPressed: (){},
+              text: DataValues.loginElevatedButtonTitle,
+            ),
+              ],
+            ),
           ),
         ),
       ),

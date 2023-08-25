@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       title: 'Stucap Admin',
       theme: AppThemeData.lightTheme,
       onGenerateRoute: RouteGenerator.onGeneratedRoutes,
-      initialRoute: LoginScreen.routeName,
+      initialRoute: WelcomeScreen.routeName,
     );
   }
 }
