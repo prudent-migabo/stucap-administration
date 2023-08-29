@@ -16,6 +16,9 @@ dependencies:
 
   cupertino_icons: ^1.0.2
   barcode_widget:
+  equatable:
+  bloc:
+  flutter_bloc:
 
 dev_dependencies:
   flutter_test:

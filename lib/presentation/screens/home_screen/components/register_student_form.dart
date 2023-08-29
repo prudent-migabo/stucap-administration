@@ -33,9 +33,9 @@ class _RegisterStudentFormState extends State<RegisterStudentForm> {
           children: [
             Expanded(child: nameField(controller: _firstName, hintText: DataValues.firstNameHint, labelText: DataValues.firstNameHint),),
             filterSeparator,
-            Expanded(child: nameField(controller: _middleName, hintText: DataValues.middleNameHint, labelText: DataValues.firstNameHint),),
+            Expanded(child: nameField(controller: _middleName, hintText: DataValues.middleNameHint, labelText: DataValues.middleNameHint),),
             filterSeparator,
-            Expanded(child: nameField(controller: _lastName, hintText: DataValues.lastNameHint, labelText: DataValues.firstNameHint),),
+            Expanded(child: nameField(controller: _lastName, hintText: DataValues.lastNameHint, labelText: DataValues.lastNameHint),),
             filterSeparator,
             Expanded(child:
                 dropdownTextField(
@@ -75,12 +75,11 @@ class _RegisterStudentFormState extends State<RegisterStudentForm> {
             ),
           ],
         ),
-        const SizedBox(height: 10,),
+        const SizedBox(height: 20,),
         Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Expanded(child: CustomButton(onPressed: (){}, text: DataValues.buttonRegisterAndGenerateQRCode)),
-            const SizedBox(width: 20,),
             Expanded(
               child: BarcodeWidget(
                 barcode: Barcode.qrCode(

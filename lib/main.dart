@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:stucap_admin/business_logic/business_logic.dart';
 import 'package:stucap_admin/config/router.dart';
 import 'package:stucap_admin/config/theming.dart';
 
@@ -14,12 +16,19 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Stucap Admin',
-      theme: AppThemeData.lightTheme,
-      onGenerateRoute: RouteGenerator.onGeneratedRoutes,
-      initialRoute: WelcomeScreen.routeName,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => HomeFilterLogicCubit(),
+        ),
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Stucap Admin',
+        theme: AppThemeData.lightTheme,
+        onGenerateRoute: RouteGenerator.onGeneratedRoutes,
+        initialRoute: WelcomeScreen.routeName,
+      ),
     );
   }
 }

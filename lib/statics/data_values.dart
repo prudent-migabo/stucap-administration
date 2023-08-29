@@ -5,6 +5,8 @@ class DataValues {
   // TEXTS
   static const String waitingText = "Patientez...";
   static const String welcomeText = "Bienvenue";
+  static const String editText = "Modifier";
+  static const String studentDetail = "Detail sur l'étudiant";
 
   // SPLASH
   static const String splashTitle = 'STUCAP';
@@ -70,6 +72,7 @@ class DataValues {
   static const String academicFeesHint = "Frais accadémiques";
   static const String addressHint = "Adresse";
   static const String buttonRegisterAndGenerateQRCode = "Enregister et génerer QR code";
+  static const String homeRegisterStudentSectionTitle = "Enregistrer un étudiant";
 
 
   // Home list of student section
