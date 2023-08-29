@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:stucap_admin/config/theming.dart';
 
-Widget customDrawerListTile({required String title, VoidCallback? onPressed}) {
+Widget customDrawerListTile({required String title, VoidCallback? onPressed, Color? color}) {
   return GestureDetector(
     onTap: onPressed,
-    child: ListTile(
-      leading: const Icon(Icons.people),
-      title: Text(title,
-        style: TextStyle(fontSize: AppThemeData.lightTheme.textTheme.titleSmall!.fontSize),
+    child: Container(
+      color: color,
+      child: ListTile(
+        leading: const Icon(Icons.people),
+        title: Text(title,
+          style: TextStyle(fontSize: AppThemeData.lightTheme.textTheme.titleSmall!.fontSize),
+        ),
       ),
     ),
   );

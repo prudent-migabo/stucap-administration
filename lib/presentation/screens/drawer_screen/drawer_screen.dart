@@ -11,8 +11,7 @@ class DrawerScreen extends StatelessWidget {
       this.onL2Pressed,
       this.onL3Pressed,
       this.onM1Pressed,
-      this.onM2Pressed
-
+      this.onM2Pressed, this.isL0, this.isL1, this.isL2, this.isL3, this.isM1, this.isM2,
       })
       : super(key: key);
 
@@ -22,6 +21,12 @@ class DrawerScreen extends StatelessWidget {
   final VoidCallback? onL3Pressed;
   final VoidCallback? onM1Pressed;
   final VoidCallback? onM2Pressed;
+  final bool? isL0;
+  final bool? isL1;
+  final bool? isL2;
+  final bool? isL3;
+  final bool? isM1;
+  final bool? isM2;
 
   @override
   Widget build(BuildContext context) {
@@ -75,6 +80,7 @@ class DrawerScreen extends StatelessWidget {
                   height: 10,
                 ),
                 customDrawerListTile(
+                  color: isL0 == true ? AppThemeData.backgroundGrey.withOpacity(0.4): null,
                   title: DataValues.drawerDescription1,
                   onPressed: onL0Pressed,
                 ),

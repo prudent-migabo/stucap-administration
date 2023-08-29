@@ -8,8 +8,10 @@ class ListRegisteredStudentScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: const EdgeInsets.only(top: 10),
       color: AppThemeData.secondaryColor,
       child: ListView.builder(
+        physics: const BouncingScrollPhysics(),
           itemCount: 20,
           itemBuilder: (context, index) {
             return Column(

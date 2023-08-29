@@ -60,4 +60,20 @@ class DataValues {
   static const String settingsDescription1 = "Langues";
   static const String settingsDescription2 = "Thème";
 
+  // Home screen
+  static const String firstNameHint = "Nom";
+  static const String middleNameHint = "PostNom";
+  static const String lastNameHint = "Prénom";
+  static const String sexHint = "Sexe";
+  static const String birthDayNameHint = "Date de naissance";
+  static const String promotionHint = "Promotion";
+  static const String academicFeesHint = "Frais accadémiques";
+  static const String addressHint = "Adresse";
+  static const String buttonRegisterAndGenerateQRCode = "Enregister et génerer QR code";
+
+
+  // Home list of student section
+  static const String homeListStudentSectionTitle = "Liste";
+
+
 }

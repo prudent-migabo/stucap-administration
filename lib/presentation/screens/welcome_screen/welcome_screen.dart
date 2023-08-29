@@ -23,11 +23,17 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppThemeData.backgroundGrey,
+      backgroundColor: AppThemeData.backgroundGrey.withOpacity(0.4),
       body: Row(
         children: [
            Expanded(
               child: DrawerScreen(
+                isL0: isL0,
+                isL1: isL1,
+                isL2: isL2,
+                isL3: isL3,
+                isM1: isM1,
+                isM2: isM2,
                 onL0Pressed: (){
                   setState(() {
                     isL0 = !isL0;
