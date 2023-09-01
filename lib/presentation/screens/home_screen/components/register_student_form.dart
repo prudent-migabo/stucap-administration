@@ -76,21 +76,17 @@ class _RegisterStudentFormState extends State<RegisterStudentForm> {
           ],
         ),
         const SizedBox(height: 20,),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Expanded(child: CustomButton(onPressed: (){}, text: DataValues.buttonRegisterAndGenerateQRCode)),
-            Expanded(
-              child: BarcodeWidget(
-                barcode: Barcode.qrCode(
-                  errorCorrectLevel: BarcodeQRCorrectionLevel.high,
-                ),
-                data: 'Jh2ZHuD12lenzezXColp',
-                width: 200,
-                height: 200,
-              ),
-            ),
-          ],
+        SizedBox(
+          width: MediaQuery.of(context).size.width / 3,
+            child: CustomButton(onPressed: (){}, text: DataValues.buttonRegisterAndGenerateQRCode)),
+        const SizedBox(height: 20,),
+        BarcodeWidget(
+          barcode: Barcode.qrCode(
+            errorCorrectLevel: BarcodeQRCorrectionLevel.high,
+          ),
+          data: 'Jh2ZHuD12lenzezXColp',
+          width: 150,
+          height: 150,
         ),
       ],
     );

@@ -21,6 +21,9 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => HomeFilterLogicCubit(),
         ),
+        BlocProvider(
+          create: (context) => HomeListStudentsCubit(),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

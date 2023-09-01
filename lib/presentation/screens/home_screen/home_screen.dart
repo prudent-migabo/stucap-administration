@@ -20,75 +20,7 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Builder(
-              builder: (context) {
-                final state = context
-                    .select((HomeFilterLogicCubit logic) => logic.state.index);
-                return Row(
-                  children: [
-                    Expanded(
-                      child: CustomHomeFilter(
-                        onPressed: () {
-                          context.read<HomeFilterLogicCubit>().emitterIndex1();
-                        },
-                        text: 'L0',
-                        color: state ==1 ? filterSelectedColor : null,
-                      ),
-                    ),
-                    filterSeparator,
-                    Expanded(
-                      child: CustomHomeFilter(
-                        onPressed: () {
-                          context.read<HomeFilterLogicCubit>().emitterIndex2();
-                        },
-                        text: 'L1',
-                        color: state ==2 ? filterSelectedColor : null,
-                      ),
-                    ),
-                    filterSeparator,
-                    Expanded(
-                      child: CustomHomeFilter(
-                        onPressed: () {
-                          context.read<HomeFilterLogicCubit>().emitterIndex3();
-                        },
-                        text: 'L2',
-                        color: state ==3 ? filterSelectedColor : null,
-                      ),
-                    ),
-                    filterSeparator,
-                    Expanded(
-                      child: CustomHomeFilter(
-                        onPressed: () {
-                          context.read<HomeFilterLogicCubit>().emitterIndex4();
-                        },
-                        text: 'L3',
-                        color: state ==4 ? filterSelectedColor : null,
-                      ),
-                    ),
-                    filterSeparator,
-                    Expanded(
-                      child: CustomHomeFilter(
-                        onPressed: () {
-                          context.read<HomeFilterLogicCubit>().emitterIndex5();
-                        },
-                        text: 'M1',
-                        color: state ==5 ? filterSelectedColor : null,
-                      ),
-                    ),
-                    filterSeparator,
-                    Expanded(
-                      child: CustomHomeFilter(
-                        onPressed: () {
-                          context.read<HomeFilterLogicCubit>().emitterIndex6();
-                        },
-                        text: 'M2',
-                        color: state ==6 ? filterSelectedColor : null,
-                      ),
-                    ),
-                  ],
-                );
-              }
-            ),
+
             Builder(builder: (context) {
               final state = context
                   .select((HomeFilterLogicCubit logic) => logic.state.index);

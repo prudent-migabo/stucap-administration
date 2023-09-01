@@ -51,7 +51,7 @@ class DataValues {
   static const String positiveVerificationMessage = "Est en ordre.";
 
   // NAVIGATION DRAWER
-  static const String drawerTitle1 = "Etudiants";
+  static const String drawerTitle1 = "Etudiants inscrits";
   static const String drawerTitle2 = "Paramètres";
   static const String drawerDescription1 = "Inscrits en L0";
   static const String drawerDescription2 = "Inscrits en L1";
@@ -61,6 +61,13 @@ class DataValues {
   static const String drawerDescription6 = "Inscrits en M2";
   static const String settingsDescription1 = "Langues";
   static const String settingsDescription2 = "Thème";
+  static const String settingsManageStudentsText = "Gerer les étudiants";
+  static const String drawerManageStudentsDescription1 = "Gestion L0";
+  static const String drawerManageStudentsDescription2 = "Gestion L1";
+  static const String drawerManageStudentsDescription3 = "Gestion L2";
+  static const String drawerManageStudentsDescription4 = "Gestion L3";
+  static const String drawerManageStudentsDescription5 = "Gestion M1";
+  static const String drawerManageStudentsDescription6 = "Gestion M2";
 
   // Home screen
   static const String firstNameHint = "Nom";
@@ -76,7 +83,7 @@ class DataValues {
 
 
   // Home list of student section
-  static const String homeListStudentSectionTitle = "Liste";
+  static const String homeListStudentSectionTitle = "Liste des étudiants";
 
 
 }

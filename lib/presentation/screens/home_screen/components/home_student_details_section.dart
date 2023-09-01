@@ -16,8 +16,8 @@ class HomeStudentDetailsSection extends StatelessWidget {
             errorCorrectLevel: BarcodeQRCorrectionLevel.high,
           ),
           data: 'Jh2ZHuD12lenzezXColp',
-          width: 200,
-          height: 200,
+          width: 150,
+          height: 150,
         ),
         const SizedBox(height: 15,),
         CustomRowListTileDescription(

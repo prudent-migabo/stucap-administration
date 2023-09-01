@@ -66,62 +66,122 @@ class DrawerScreen extends StatelessWidget {
             height: 10,
           ),
           Padding(
-            padding: const EdgeInsets.all(15),
+            padding: const EdgeInsets.only(left: 15, right: 15, bottom: 15),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  DataValues.drawerTitle1,
-                  style: TextStyle(
-                    fontWeight: bold,
-                  ),
+                ExpansionPanelList.radio(
+                  elevation: 0,
+                  initialOpenPanelValue: 1,
+                    expandedHeaderPadding: const EdgeInsets.only(top: 0),
+                    children: [
+                      ExpansionPanelRadio(
+                        value: 1,
+                        headerBuilder: (BuildContext context, bool isExpanded){
+                          return Padding(
+                            padding: const EdgeInsets.only(top: 13.0),
+                            child: Text(
+                              DataValues.drawerTitle1,
+                              style: TextStyle(
+                                fontWeight: bold,
+                              ),
+                            ),
+                          );
+                        },
+                        body: Column(
+                          children: [
+                            customDrawerListTile(
+                              color: isL0 == true ? AppThemeData.backgroundGrey.withOpacity(0.4): null,
+                              title: DataValues.drawerDescription1,
+                              onPressed: onL0Pressed,
+                            ),
+                            customDrawerListTile(
+                              title: DataValues.drawerDescription2,
+                              onPressed: onL1Pressed,
+                            ),
+                            customDrawerListTile(
+                              title: DataValues.drawerDescription3,
+                              onPressed: onL2Pressed,
+                            ),
+                            customDrawerListTile(
+                              title: DataValues.drawerDescription4,
+                              onPressed: onL3Pressed,
+                            ),
+                            customDrawerListTile(
+                                title: DataValues.drawerDescription5,
+                                onPressed: onM1Pressed),
+                            customDrawerListTile(
+                              title: DataValues.drawerDescription6,
+                              onPressed: onM2Pressed,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
                 ),
-                const SizedBox(
-                  height: 10,
+                const SizedBox(height: 10,),
+                ExpansionPanelList.radio(
+                  elevation: 0,
+                  initialOpenPanelValue: 1,
+                  expandedHeaderPadding: const EdgeInsets.only(top: 0),
+                  children: [
+                    ExpansionPanelRadio(
+                      value: 1,
+                      headerBuilder: (BuildContext context, bool isExpanded){
+                        return Padding(
+                          padding: const EdgeInsets.only(top: 13.0),
+                          child: Text(
+                            DataValues.settingsManageStudentsText,
+                            style: TextStyle(
+                              fontWeight: bold,
+                            ),
+                          ),
+                        );
+                      },
+                      body: Column(
+                        children: [
+                          customDrawerListTile(
+                            color: isL0 == true ? AppThemeData.backgroundGrey.withOpacity(0.4): null,
+                            title: DataValues.drawerManageStudentsDescription1,
+                            onPressed: onL0Pressed,
+                          ),
+                          customDrawerListTile(
+                            title: DataValues.drawerManageStudentsDescription2,
+                            onPressed: onL1Pressed,
+                          ),
+                          customDrawerListTile(
+                            title: DataValues.drawerManageStudentsDescription3,
+                            onPressed: onL2Pressed,
+                          ),
+                          customDrawerListTile(
+                            title: DataValues.drawerManageStudentsDescription4,
+                            onPressed: onL3Pressed,
+                          ),
+                          customDrawerListTile(
+                              title: DataValues.drawerManageStudentsDescription5,
+                              onPressed: onM1Pressed),
+                          customDrawerListTile(
+                            title: DataValues.drawerManageStudentsDescription6,
+                            onPressed: onM2Pressed,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
-                customDrawerListTile(
-                  color: isL0 == true ? AppThemeData.backgroundGrey.withOpacity(0.4): null,
-                  title: DataValues.drawerDescription1,
-                  onPressed: onL0Pressed,
-                ),
-                customDrawerListTile(
-                  title: DataValues.drawerDescription2,
-                  onPressed: onL1Pressed,
-                ),
-                customDrawerListTile(
-                  title: DataValues.drawerDescription3,
-                  onPressed: onL2Pressed,
-                ),
-                customDrawerListTile(
-                  title: DataValues.drawerDescription4,
-                  onPressed: onL3Pressed,
-                ),
-                customDrawerListTile(
-                    title: DataValues.drawerDescription5,
-                    onPressed: onM1Pressed),
-                customDrawerListTile(
-                  title: DataValues.drawerDescription6,
-                  onPressed: onM2Pressed,
-                ),
-                const SizedBox(
-                  height: 15,
-                ),
-                Text(
-                  DataValues.drawerTitle2,
-                  style: TextStyle(
-                    fontWeight: bold,
-                  ),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                customDrawerSettingsListTile(
-                  leading: const Icon(Icons.language),
-                  title: DataValues.settingsDescription1,
-                ),
-                customDrawerSettingsListTile(
-                  leading: const Icon(Icons.dark_mode),
-                  title: DataValues.settingsDescription2,
+                Column(
+                  children: [
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    customDrawerSettingsListTile(
+                      leading: const Icon(Icons.language),
+                      title: DataValues.settingsDescription1,
+                    ),
+                    customDrawerSettingsListTile(
+                      leading: const Icon(Icons.dark_mode),
+                      title: DataValues.settingsDescription2,
+                    ),
+                  ],
                 ),
               ],
             ),
