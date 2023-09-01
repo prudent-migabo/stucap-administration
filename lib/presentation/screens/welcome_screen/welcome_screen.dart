@@ -20,11 +20,14 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   bool isM1 = false;
   bool isM2 = false;
 
+  bool isManagL0 = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppThemeData.backgroundGrey.withOpacity(0.4),
       body: Row(
+        mainAxisSize: MainAxisSize.min,
         children: [
            Expanded(
               child: DrawerScreen(
@@ -34,6 +37,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 isL3: isL3,
                 isM1: isM1,
                 isM2: isM2,
+                isManagL0: isManagL0,
                 onL0Pressed: (){
                   setState(() {
                     isL0 = !isL0;
@@ -44,17 +48,23 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                     isL1 = true;
                   });
                 },
+                onManagL0Pressed: (){
+                  setState(() {
+                    isManagL0 = !isManagL0;
+                  });
+                },
               ),
           ),
           homeExpandedSpacer,
-           isL0 ? const Expanded(
-              child: ListRegisteredStudentScreen(),
-          ) : Container(),
-          const Expanded(
-            flex: 3,
-              child: HomeScreen()),
+            Expanded(
+              flex: 3,
+                child: isL0 ? ListRegisteredStudentScreen() : isManagL0? HomeScreen() :  Container()),
+          // const Expanded(
+          //   flex: 3,
+          //     child: HomeScreen()),
         ],
       ),
     );
   }
 }
+// : isManagL0 ? const HomeScreen() : const ListRegisteredStudentScreen()

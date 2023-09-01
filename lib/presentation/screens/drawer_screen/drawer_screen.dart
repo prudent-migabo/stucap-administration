@@ -11,7 +11,7 @@ class DrawerScreen extends StatelessWidget {
       this.onL2Pressed,
       this.onL3Pressed,
       this.onM1Pressed,
-      this.onM2Pressed, this.isL0, this.isL1, this.isL2, this.isL3, this.isM1, this.isM2,
+      this.onM2Pressed, this.isL0, this.isL1, this.isL2, this.isL3, this.isM1, this.isM2, this.isManagL0, this.onManagL0Pressed,
       })
       : super(key: key);
 
@@ -27,6 +27,9 @@ class DrawerScreen extends StatelessWidget {
   final bool? isL3;
   final bool? isM1;
   final bool? isM2;
+
+  final bool? isManagL0;
+  final VoidCallback? onManagL0Pressed;
 
   @override
   Widget build(BuildContext context) {
@@ -140,13 +143,13 @@ class DrawerScreen extends StatelessWidget {
                       body: Column(
                         children: [
                           customDrawerListTile(
-                            color: isL0 == true ? AppThemeData.backgroundGrey.withOpacity(0.4): null,
+                            color: isManagL0 == true ? AppThemeData.backgroundGrey.withOpacity(0.4): null,
                             title: DataValues.drawerManageStudentsDescription1,
-                            onPressed: onL0Pressed,
+                            onPressed: onManagL0Pressed,
                           ),
                           customDrawerListTile(
                             title: DataValues.drawerManageStudentsDescription2,
-                            onPressed: onL1Pressed,
+                            onPressed: (){},
                           ),
                           customDrawerListTile(
                             title: DataValues.drawerManageStudentsDescription3,
@@ -169,6 +172,7 @@ class DrawerScreen extends StatelessWidget {
                   ],
                 ),
                 Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const SizedBox(
                       height: 10,

@@ -11,12 +11,14 @@ class ListRegisteredStudentScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(top: 10),
-      color: AppThemeData.secondaryColor,
+      width: double.infinity,
+      color: AppThemeData.backgroundWhite,
       child: ListView.builder(
-        physics: const BouncingScrollPhysics(),
-          itemCount: 20,
-          itemBuilder: (context, index) {
+        padding: const EdgeInsets.symmetric(vertical: 15),
+          // shrinkWrap: true,
+          // physics: const NeverScrollableScrollPhysics(),
+          itemCount: 15,
+          itemBuilder: (context, index){
             return GestureDetector(
               onTap: (){
                 infoPopup(
@@ -80,26 +82,27 @@ class ListRegisteredStudentScreen extends StatelessWidget {
                       ),
                     ],
                   ),
-                  );
+                );
               },
               child: Column(
                 children: [
                   customListTile(
-                    title: 'Amini serubagisha',
-                    subtitle: const Text(
-                      'FA: 300\$',
-                      style: TextStyle(
-                          fontSize: 13,
-                      ),
+                    title: 'Akilimali matumike',
+                    subtitle: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Expanded(child: Text('FA : 300\$', style: TextStyle(fontSize: homeListStudentSectionSubtitleFontSize),),),
+                        Expanded(child: Text('Promotion : L0', style: TextStyle(fontSize: homeListStudentSectionSubtitleFontSize)),),
+                        Expanded(child: Text('Sexe : M', style: TextStyle(fontSize: homeListStudentSectionSubtitleFontSize)),),
+                        Expanded(child: Text('Adresse : Q.Himbi, Av de Goma', style: TextStyle(fontSize: homeListStudentSectionSubtitleFontSize)),),
+                      ],
                     ),
+                    trailing: TextButton(onPressed: (){}, child: Text(DataValues.editText, style: TextStyle(
+                      fontWeight: bold,
+                      color: Theme.of(context).primaryColor,
+                    ),)),
                   ),
-                  const Padding(
-                    padding: EdgeInsets.only(left: 70),
-                    child: Divider(
-                      thickness: 0.3,
-                      color: AppThemeData.backgroundGrey,
-                    ),
-                  ),
+                  const CustomDivider(height: 2,),
                 ],
               ),
             );
