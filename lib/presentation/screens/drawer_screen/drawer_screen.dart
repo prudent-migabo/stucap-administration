@@ -98,21 +98,26 @@ class DrawerScreen extends StatelessWidget {
                               onPressed: onL0Pressed,
                             ),
                             customDrawerListTile(
+                              color: isL1 == true ? AppThemeData.backgroundGrey.withOpacity(0.4): null,
                               title: DataValues.drawerDescription2,
                               onPressed: onL1Pressed,
                             ),
                             customDrawerListTile(
+                              color: isL2 == true ? AppThemeData.backgroundGrey.withOpacity(0.4): null,
                               title: DataValues.drawerDescription3,
                               onPressed: onL2Pressed,
                             ),
                             customDrawerListTile(
+                              color: isL3 == true ? AppThemeData.backgroundGrey.withOpacity(0.4): null,
                               title: DataValues.drawerDescription4,
                               onPressed: onL3Pressed,
                             ),
                             customDrawerListTile(
+                                color: isM1 == true ? AppThemeData.backgroundGrey.withOpacity(0.4): null,
                                 title: DataValues.drawerDescription5,
                                 onPressed: onM1Pressed),
                             customDrawerListTile(
+                              color: isM2 == true ? AppThemeData.backgroundGrey.withOpacity(0.4): null,
                               title: DataValues.drawerDescription6,
                               onPressed: onM2Pressed,
                             ),
@@ -148,21 +153,26 @@ class DrawerScreen extends StatelessWidget {
                             onPressed: onManagL0Pressed,
                           ),
                           customDrawerListTile(
+                            // color: isManagL1 == true ? AppThemeData.backgroundGrey.withOpacity(0.4): null,
                             title: DataValues.drawerManageStudentsDescription2,
                             onPressed: (){},
                           ),
                           customDrawerListTile(
+                            // color: isManagL2 == true ? AppThemeData.backgroundGrey.withOpacity(0.4): null,
                             title: DataValues.drawerManageStudentsDescription3,
                             onPressed: onL2Pressed,
                           ),
                           customDrawerListTile(
+                            // color: isManagL2 == true ? AppThemeData.backgroundGrey.withOpacity(0.4): null,
                             title: DataValues.drawerManageStudentsDescription4,
                             onPressed: onL3Pressed,
                           ),
                           customDrawerListTile(
+                              // color: isManagM1 == true ? AppThemeData.backgroundGrey.withOpacity(0.4): null,
                               title: DataValues.drawerManageStudentsDescription5,
                               onPressed: onM1Pressed),
                           customDrawerListTile(
+                            // color: isManagM2 == true ? AppThemeData.backgroundGrey.withOpacity(0.4): null,
                             title: DataValues.drawerManageStudentsDescription6,
                             onPressed: onM2Pressed,
                           ),

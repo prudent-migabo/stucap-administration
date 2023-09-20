@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:stucap_admin/config/theming.dart';
+
+import '../statics/statics.dart';
 
 void infoPopup(
   BuildContext context, {
@@ -40,4 +43,47 @@ void infoPopup(
 
   showDialog(
       barrierDismissible: true, context: context, builder: (context) => alert);
+}
+
+
+/// Method that throws an error dialog box for the entire app
+void errorDialog(BuildContext context, {required String content}) {
+  Widget okButton() {
+    return TextButton(onPressed: () => Navigator.pop(context), child: Text(
+      'OK',
+      style: TextStyle(
+        fontWeight: bold,
+        color: AppThemeData.errorTextColor,
+      ),
+    ),);
+  }
+
+
+  AlertDialog alert = AlertDialog(
+    title: Text(
+      'Erreur',
+      style: TextStyle(
+        fontWeight: bold,
+        color: AppThemeData.errorTextColor,
+      ),
+    ),
+    content: Text(
+      content,
+    ),
+    actions: [
+      okButton(),
+    ],
+  );
+
+  showDialog(
+      barrierDismissible: false, context: context, builder: (context) => alert);
+}
+
+
+void successToast({required String message}) {
+  Fluttertoast.showToast(
+      msg: message,
+      backgroundColor: AppThemeData.backgroundGreen,
+      textColor: Colors.white,
+      gravity: ToastGravity.TOP);
 }
