@@ -12,6 +12,8 @@ class StudentModel{
   bool? inscriptionStatus;
   Timestamp? createdAt;
   String? studentID;
+  String? sex;
+  String? qrCode;
 
 //<editor-fold desc="Data Methods">
   StudentModel({
@@ -24,6 +26,8 @@ class StudentModel{
     this.inscriptionStatus,
     this.createdAt,
     this.studentID,
+    this.sex,
+    this.qrCode,
   });
 
 
@@ -36,6 +40,7 @@ class StudentModel{
       'presenceStatus': presenceStatus,
       'academicFees': academicFees,
       'inscriptionStatus': inscriptionStatus,
+      'sex': sex,
       'createdAt': DateTime.now().millisecondsSinceEpoch,
     };
   }
@@ -51,6 +56,8 @@ class StudentModel{
       academicFees: map['academicFees'] ?? 0.0,
       inscriptionStatus: map['inscriptionStatus'] ?? false,
       createdAt: map['createdAt'] ?? 0,
+      sex: map['sex'] ?? '',
+      qrCode: map['qrCode'] ?? '',
       studentID: doc.id,
     );
   }

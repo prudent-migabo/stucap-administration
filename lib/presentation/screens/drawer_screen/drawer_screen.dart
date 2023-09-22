@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:stucap_admin/business_logic/business_logic.dart';
 import 'package:stucap_admin/config/theming.dart';
 import 'package:stucap_admin/presentation/presentation.dart';
 import 'package:stucap_admin/statics/statics.dart';
@@ -92,34 +94,78 @@ class DrawerScreen extends StatelessWidget {
                         },
                         body: Column(
                           children: [
-                            customDrawerListTile(
-                              color: isL0 == true ? AppThemeData.backgroundGrey.withOpacity(0.4): null,
-                              title: DataValues.drawerDescription1,
-                              onPressed: onL0Pressed,
+                            Builder(
+                              builder: (context) {
+                                final state = context.select((DrawerCubit cubit) => cubit.state);
+                                return customDrawerListTile(
+                                  color: state == 'L0'  ? AppThemeData.backgroundGrey.withOpacity(0.4): null,
+                                  title: DataValues.drawerDescription1,
+                                  onPressed: (){
+                                    context.read<DrawerCubit>().selectIndex(0);
+                                    print('################################# $state');
+                                  },
+                                );
+                              }
                             ),
-                            customDrawerListTile(
-                              color: isL1 == true ? AppThemeData.backgroundGrey.withOpacity(0.4): null,
-                              title: DataValues.drawerDescription2,
-                              onPressed: onL1Pressed,
+                            Builder(
+                              builder: (context) {
+                                final state = context.select((DrawerCubit cubit) => cubit.state);
+                                return customDrawerListTile(
+                                  color: state == 'L1' ? AppThemeData.backgroundGrey.withOpacity(0.4): null,
+                                  title: DataValues.drawerDescription2,
+                                  onPressed: (){
+                                    context.read<DrawerCubit>().selectIndex(1);
+                                  },
+                                );
+                              }
                             ),
-                            customDrawerListTile(
-                              color: isL2 == true ? AppThemeData.backgroundGrey.withOpacity(0.4): null,
-                              title: DataValues.drawerDescription3,
-                              onPressed: onL2Pressed,
+                            Builder(
+                              builder: (context) {
+                                final state = context.select((DrawerCubit cubit) => cubit.state);
+                                return customDrawerListTile(
+                                  color: state == 'L2' ? AppThemeData.backgroundGrey.withOpacity(0.4): null,
+                                  title: DataValues.drawerDescription3,
+                                  onPressed: (){
+                                    context.read<DrawerCubit>().selectIndex(2);
+                                  },
+                                );
+                              }
                             ),
-                            customDrawerListTile(
-                              color: isL3 == true ? AppThemeData.backgroundGrey.withOpacity(0.4): null,
-                              title: DataValues.drawerDescription4,
-                              onPressed: onL3Pressed,
+                            Builder(
+                              builder: (context) {
+                                final state = context.select((DrawerCubit cubit) => cubit.state);
+                                return customDrawerListTile(
+                                  color: state == 'L3' ? AppThemeData.backgroundGrey.withOpacity(0.4): null,
+                                  title: DataValues.drawerDescription4,
+                                  onPressed: (){
+                                    context.read<DrawerCubit>().selectIndex(3);
+                                  },
+                                );
+                              }
                             ),
-                            customDrawerListTile(
-                                color: isM1 == true ? AppThemeData.backgroundGrey.withOpacity(0.4): null,
-                                title: DataValues.drawerDescription5,
-                                onPressed: onM1Pressed),
-                            customDrawerListTile(
-                              color: isM2 == true ? AppThemeData.backgroundGrey.withOpacity(0.4): null,
-                              title: DataValues.drawerDescription6,
-                              onPressed: onM2Pressed,
+                            Builder(
+                              builder: (context) {
+                                final state = context.select((DrawerCubit cubit) => cubit.state);
+                                return customDrawerListTile(
+                                    color: state == 'M1' ? AppThemeData.backgroundGrey.withOpacity(0.4): null,
+                                    title: DataValues.drawerDescription5,
+                                  onPressed: (){
+                                    context.read<DrawerCubit>().selectIndex(4);
+                                  },
+                                );
+                              }
+                            ),
+                            Builder(
+                              builder: (context) {
+                                final state = context.select((DrawerCubit cubit) => cubit.state);
+                                return customDrawerListTile(
+                                  color: state == 'M2' ? AppThemeData.backgroundGrey.withOpacity(0.4): null,
+                                  title: DataValues.drawerDescription6,
+                                  onPressed: (){
+                                    context.read<DrawerCubit>().selectIndex(5);
+                                  },
+                                );
+                              }
                             ),
                           ],
                         ),
@@ -147,34 +193,76 @@ class DrawerScreen extends StatelessWidget {
                       },
                       body: Column(
                         children: [
-                          customDrawerListTile(
-                            color: isManagL0 == true ? AppThemeData.backgroundGrey.withOpacity(0.4): null,
-                            title: DataValues.drawerManageStudentsDescription1,
-                            onPressed: onManagL0Pressed,
+                          Builder(
+                            builder: (context) {
+                              final state = context.select((DrawerCubit cubit) => cubit.state);
+                              return customDrawerListTile(
+                                color: state == 'MGL0' ? AppThemeData.backgroundGrey.withOpacity(0.4): null,
+                                title: DataValues.drawerManageStudentsDescription1,
+                                onPressed: (){
+                                  context.read<DrawerCubit>().selectManagementIndex(0);
+                                },
+                              );
+                            }
                           ),
-                          customDrawerListTile(
-                            // color: isManagL1 == true ? AppThemeData.backgroundGrey.withOpacity(0.4): null,
-                            title: DataValues.drawerManageStudentsDescription2,
-                            onPressed: (){},
+                          Builder(
+                            builder: (context) {
+                              final state = context.select((DrawerCubit cubit) => cubit.state);
+                              return customDrawerListTile(
+                                 color: state == 'MGL1' ? AppThemeData.backgroundGrey.withOpacity(0.4): null,
+                                title: DataValues.drawerManageStudentsDescription2,
+                                onPressed: (){
+                                  context.read<DrawerCubit>().selectManagementIndex(1);
+                                },
+                              );
+                            }
                           ),
-                          customDrawerListTile(
-                            // color: isManagL2 == true ? AppThemeData.backgroundGrey.withOpacity(0.4): null,
-                            title: DataValues.drawerManageStudentsDescription3,
-                            onPressed: onL2Pressed,
+                          Builder(
+                            builder: (context) {
+                              final state = context.select((DrawerCubit cubit) => cubit.state);
+                              return customDrawerListTile(
+                                color: state == 'MGL2' ? AppThemeData.backgroundGrey.withOpacity(0.4): null,
+                                title: DataValues.drawerManageStudentsDescription3,
+                                onPressed: (){
+                                  context.read<DrawerCubit>().selectManagementIndex(2);
+                                },
+                              );
+                            }
                           ),
-                          customDrawerListTile(
-                            // color: isManagL2 == true ? AppThemeData.backgroundGrey.withOpacity(0.4): null,
-                            title: DataValues.drawerManageStudentsDescription4,
-                            onPressed: onL3Pressed,
+                          Builder(
+                            builder: (context) {
+                              final state = context.select((DrawerCubit cubit) => cubit.state);
+                              return customDrawerListTile(
+                                color: state == 'MGL3' ? AppThemeData.backgroundGrey.withOpacity(0.4): null,
+                                title: DataValues.drawerManageStudentsDescription4,
+                                onPressed: (){
+                                  context.read<DrawerCubit>().selectManagementIndex(3);
+                                },
+                              );
+                            }
                           ),
-                          customDrawerListTile(
-                              // color: isManagM1 == true ? AppThemeData.backgroundGrey.withOpacity(0.4): null,
-                              title: DataValues.drawerManageStudentsDescription5,
-                              onPressed: onM1Pressed),
-                          customDrawerListTile(
-                            // color: isManagM2 == true ? AppThemeData.backgroundGrey.withOpacity(0.4): null,
-                            title: DataValues.drawerManageStudentsDescription6,
-                            onPressed: onM2Pressed,
+                          Builder(
+                            builder: (context) {
+                              final state = context.select((DrawerCubit cubit) => cubit.state);
+                              return customDrawerListTile(
+                                  color: state == 'MGM1' ? AppThemeData.backgroundGrey.withOpacity(0.4): null,
+                                  title: DataValues.drawerManageStudentsDescription5,
+                                  onPressed: (){
+                                    context.read<DrawerCubit>().selectManagementIndex(4);
+                                  });
+                            }
+                          ),
+                          Builder(
+                            builder: (context) {
+                              final state = context.select((DrawerCubit cubit) => cubit.state);
+                              return customDrawerListTile(
+                                color: state == 'MGM2' ? AppThemeData.backgroundGrey.withOpacity(0.4): null,
+                                title: DataValues.drawerManageStudentsDescription6,
+                                onPressed: (){
+                                  context.read<DrawerCubit>().selectManagementIndex(5);
+                                },
+                              );
+                            }
                           ),
                         ],
                       ),
@@ -204,7 +292,10 @@ class DrawerScreen extends StatelessWidget {
             padding: const EdgeInsets.only(left: 15.0, right: 15.0, bottom: 10),
             child: CustomButton(
               backgroundColor: AppThemeData.backgroundRed,
-              onPressed: () {},
+              onPressed: () {
+                context.read<LogoutCubit>().logout();
+                Navigator.pushNamedAndRemoveUntil(context, LoginScreen.routeName, (route) => false);
+              },
               text: 'Déconnexion',
             ),
           ),

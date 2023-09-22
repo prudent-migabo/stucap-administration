@@ -7,3 +7,5 @@ export 'login_cubit/login_state.dart';
 export 'auth_stream_cubit/auth_stream_cubit.dart';
 export 'auth_stream_cubit/auth_stream_state.dart';
 export 'student_cubit/student_cubit.dart';
+export 'drawer_cubit/drawer_cubit.dart';
+export 'images_cubit/images_cubit.dart';

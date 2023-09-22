@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:stucap_admin/business_logic/business_logic.dart';
 import 'package:stucap_admin/config/theming.dart';
 import 'package:stucap_admin/presentation/presentation.dart';
+import 'package:stucap_admin/presentation/screens/home_screen/components/home_screen_section.dart';
 
 import '../../../statics/constants.dart';
 
@@ -56,9 +59,15 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               ),
           ),
           homeExpandedSpacer,
-            Expanded(
-              flex: 3,
-                child: isL0 ? ListRegisteredStudentScreen() : isManagL0? HomeScreen() :  Container()),
+            Builder(
+              builder: (context) {
+                final state = context.select((DrawerCubit cubit) => cubit.state);
+                return Expanded(
+                  flex: 3,
+                    child: state == 'L1' ? ListRegisteredStudentScreen() : state == 'MGL0' ? HomeScreenSection() : Container(),);
+              }
+            ),
+                // child: isL0 ? ListRegisteredStudentScreen() : isManagL0? HomeScreen() :  Container()),
           // const Expanded(
           //   flex: 3,
           //     child: HomeScreen()),

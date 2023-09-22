@@ -34,6 +34,8 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => LogoutCubit()),
         BlocProvider(create: (context) => StudentCubit()),
         BlocProvider(create: (context) => AuthStreamCubit()),
+        BlocProvider<DrawerCubit>(create: (context) => DrawerCubit()),
+        BlocProvider<ImagesCubit>(create: (context) => ImagesCubit()),
 
       ],
       child: MaterialApp(
@@ -41,7 +43,7 @@ class MyApp extends StatelessWidget {
         title: 'Stucap Admin',
         theme: AppThemeData.lightTheme,
         onGenerateRoute: RouteGenerator.onGeneratedRoutes,
-        initialRoute: Wrapper.routeName,
+        initialRoute: SplashScreen.routeName,
       ),
     );
   }
