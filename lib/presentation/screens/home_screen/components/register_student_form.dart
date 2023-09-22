@@ -34,7 +34,7 @@ class _RegisterStudentFormState extends State<RegisterStudentForm> {
   onSubmit() {
     if (!_formKey.currentState!.validate()) return;
     context.read<StudentCubit>().createStudent(StudentModel(
-      avatar: '',
+      avatar: 'https://media.istockphoto.com/id/1390650720/photo/digital-network-connection-abstract-connection-of-dots-and-lines-technology-background-plexus.webp?b=1&s=170667a&w=0&k=20&c=SUkUz3EzbbcC25vGSHdV_9MxR0Mun8giVcuHoyOKwDo=',
       firstName: _firstName.text.trim(),
       lastName: _lastName.text.trim(),
       middleName: _middleName.text.trim(),
