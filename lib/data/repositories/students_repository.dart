@@ -26,15 +26,14 @@ class StudentsRepository {
     return querySnapshot.docs.map((e) => StudentModel.fromMap(e)).toList();
   }
 
-  Stream<List<StudentModel>> listRegisteredStudents (){
-    return studentRef.snapshots().map(listStudent);
+  Stream<List<StudentModel>> getListStudents (){
+    return studentRef.orderBy('createdAt', descending: true).snapshots().map(listStudent);
   }
 
 
   // Present students
   Stream<List<StudentModel>> listPresentStudents (String promotion){
      return studentRef.where("promotion", isEqualTo: promotion).where("presenceStatus", isEqualTo: true).snapshots().map(listStudent);
-
   }
   
 }

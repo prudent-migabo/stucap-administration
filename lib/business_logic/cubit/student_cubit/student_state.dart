@@ -9,7 +9,7 @@ enum StudentStatus {
 
 class StudentState extends Equatable{
   @override
-  List<Object?> get props => [];
+  List<Object?> get props => [studentStatus, error, students, studentID];
 
   StudentStatus studentStatus;
   String error;

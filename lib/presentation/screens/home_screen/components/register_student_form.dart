@@ -8,9 +8,9 @@ import 'package:stucap_admin/statics/statics.dart';
 import 'package:stucap_admin/utils/utils.dart';
 
 class RegisterStudentForm extends StatefulWidget {
-  const RegisterStudentForm({Key? key, this.avatar}) : super(key: key);
+   RegisterStudentForm({Key? key, this.avatar}) : super(key: key);
 
-  final String? avatar;
+   String? avatar;
 
   @override
   State<RegisterStudentForm> createState() => _RegisterStudentFormState();
@@ -28,20 +28,45 @@ class _RegisterStudentFormState extends State<RegisterStudentForm> {
   String sexValue = '';
   String birthDayValue = '';
   DateTime _date1 = DateTime.now();
-  String qrCodeID = '';
+  String devise = '';
+  String promotion = '';
 
   onSubmit() {
     if (!_formKey.currentState!.validate()) return;
     context.read<StudentCubit>().createStudent(StudentModel(
-          avatar: widget.avatar,
-          lastName: _lastName.text.trim(),
-          middleName: _middleName.text.trim(),
-          promotion: _promotion.text.trim(),
-          academicFees: double.parse(_academicFees.text.trim()),
-          inscriptionStatus: true,
-          presenceStatus: false,
-          sex: sexValue,
-        ));
+      avatar: '',
+      firstName: _firstName.text.trim(),
+      lastName: _lastName.text.trim(),
+      middleName: _middleName.text.trim(),
+      promotion: promotion,
+      academicFees: double.parse(_academicFees.text.trim()),
+      birthDay: _bithDayController.text.trim(),
+      inscriptionStatus: true,
+      presenceStatus: false,
+      sex: sexValue,
+      devise: devise,
+      address: _addressController.text.trim(),
+    ));
+  }
+
+  onClear() {
+    _firstName.clear();
+    _academicFees.clear();
+    _lastName.clear();
+    _middleName.clear();
+    _addressController.clear();
+    _bithDayController.clear();
+    setState(() {
+      widget.avatar = '';
+      sexValue = '';
+      devise = '';
+    });
+  }
+
+  @override
+  void initState() {
+    context.read<StudentCubit>().initial();
+    super.initState();
   }
 
   @override
@@ -49,7 +74,7 @@ class _RegisterStudentFormState extends State<RegisterStudentForm> {
     return BlocListener<StudentCubit, StudentState>(
       listener: (context, state) {
         if (state.studentStatus == StudentStatus.submitted) {
-          qrCodeID = state.studentID;
+          onClear();
         } else if (state.studentStatus == StudentStatus.error) {
           errorDialog(context, content: state.error);
         }
@@ -107,25 +132,47 @@ class _RegisterStudentFormState extends State<RegisterStudentForm> {
                       setState(() {
                         _date1 = pick;
                         _bithDayController.text =
-                            "${_date1.day}/${_date1.month}/${_date1.year}";
+                        "${_date1.day}/${_date1.month}/${_date1.year}";
                       });
                     },
-                    onChanged: (value) {},
+                    onChanged: (value) {
+                      _bithDayController.text = value.toString();
+                    },
                   ),
                 ),
                 filterSeparator,
                 Expanded(
-                  child: nameField(
-                      controller: _promotion,
-                      hintText: DataValues.promotionHint,
-                      labelText: DataValues.promotionHint),
+                  child: dropdownTextField(
+                      hintText: 'Promotion',
+                      listItems: ListHelper.promotion,
+                      onChanged: (value) {
+                        setState(() {
+                          promotion = value.toString();
+                        });
+                      }),
                 ),
                 filterSeparator,
                 Expanded(
-                  child: nameField(
-                      controller: _academicFees,
-                      hintText: DataValues.academicFeesHint,
-                      labelText: DataValues.academicFeesHint),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Expanded(
+                        child: nameField(
+                          controller: _academicFees,
+                          hintText: DataValues.academicFeesHint,
+                          labelText: DataValues.academicFeesHint),),
+                      const SizedBox(width: 2,),
+                      Expanded(
+                        child: dropdownTextField(
+                            hintText: "Devise",
+                            listItems: ListHelper.devise,
+                            onChanged: (value) {
+                              setState(() {
+                                devise = value.toString();
+                              });
+                            }),),
+                    ],
+                  ),
                 ),
                 filterSeparator,
                 Expanded(
@@ -140,15 +187,18 @@ class _RegisterStudentFormState extends State<RegisterStudentForm> {
               height: 20,
             ),
             SizedBox(
-                width: MediaQuery.of(context).size.width / 3,
+                width: MediaQuery
+                    .of(context)
+                    .size
+                    .width / 3,
                 child: BlocBuilder<StudentCubit, StudentState>(
                   builder: (context, state) {
                     return CustomButton(
                       onPressed: state.studentStatus == StudentStatus.submitting
                           ? () {}
-                          : () {},
+                          : onSubmit,
                       text: state.studentStatus == StudentStatus.submitting
-                          ? 'Patientez'
+                          ? 'Patientez...'
                           : DataValues.buttonRegisterAndGenerateQRCode,
                     );
                   },
@@ -156,13 +206,17 @@ class _RegisterStudentFormState extends State<RegisterStudentForm> {
             const SizedBox(
               height: 20,
             ),
-            qrCodeID == ''? Container() : BarcodeWidget(
-              barcode: Barcode.qrCode(
-                errorCorrectLevel: BarcodeQRCorrectionLevel.high,
-              ),
-              data: qrCodeID,
-              width: 150,
-              height: 150,
+            BlocBuilder<StudentCubit, StudentState>(
+              builder: (context, state) {
+                return state.studentID == '' ? Container() : BarcodeWidget(
+                  barcode: Barcode.qrCode(
+                    errorCorrectLevel: BarcodeQRCorrectionLevel.high,
+                  ),
+                  data: state.studentID,
+                  width: 150,
+                  height: 150,
+                );
+              },
             ),
           ],
         ),

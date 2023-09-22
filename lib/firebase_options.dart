@@ -55,7 +55,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyDMAsZuzj5xzWiAV44N9WNoLLiLpjllXZM',
-    appId: '1:361753425381:android:c53fca18926375f3126b0c',
+    appId: '1:361753425381:android:599a38be7a7cf2d4126b0c',
     messagingSenderId: '361753425381',
     projectId: 'stucap-e2a64',
     storageBucket: 'stucap-e2a64.appspot.com',
@@ -63,21 +63,19 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyAbWo7TboYZ_2A1Ww3tjWbcznqCi05FTKw',
-    appId: '1:361753425381:ios:bf988247c73ab423126b0c',
+    appId: '1:361753425381:ios:0db45a8d0a61c023126b0c',
     messagingSenderId: '361753425381',
     projectId: 'stucap-e2a64',
     storageBucket: 'stucap-e2a64.appspot.com',
-    iosClientId: '361753425381-dak0ods34vr9jr03vlgg5to6ffubd6m3.apps.googleusercontent.com',
-    iosBundleId: 'com.example.stucap',
+    iosBundleId: 'com.example.stucapAdmin',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
     apiKey: 'AIzaSyAbWo7TboYZ_2A1Ww3tjWbcznqCi05FTKw',
-    appId: '1:361753425381:ios:bf988247c73ab423126b0c',
+    appId: '1:361753425381:ios:0db45a8d0a61c023126b0c',
     messagingSenderId: '361753425381',
     projectId: 'stucap-e2a64',
     storageBucket: 'stucap-e2a64.appspot.com',
-    iosClientId: '361753425381-dak0ods34vr9jr03vlgg5to6ffubd6m3.apps.googleusercontent.com',
-    iosBundleId: 'com.example.stucap',
+    iosBundleId: 'com.example.stucapAdmin',
   );
 }

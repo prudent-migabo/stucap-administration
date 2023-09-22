@@ -20,21 +20,20 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-
             Builder(builder: (context) {
               final state = context
-                  .select((HomeFilterLogicCubit logic) => logic.state.index);
-              return state == 1
+                  .select((DrawerCubit cubit) => cubit.state);
+              return state == 'MGL0'
                   ? const HomeScreenSection()
-                  : state == 2
+                  : state == 'MGL1'
                   ? const HomeScreenSection()
-                  : state == 3
+                  : state == 'MGL2'
                   ? const HomeScreenSection()
-                  : state == 4
+                  : state == 'MGL3'
                   ? const HomeScreenSection()
-                  : state == 5
+                  : state == 'MGM1'
                   ? const HomeScreenSection()
-                  : state == 6
+                  : state == 'MGM2'
                   ? const HomeScreenSection()
                   : const HomeScreenSection();
             }),

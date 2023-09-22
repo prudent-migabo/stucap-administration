@@ -5,33 +5,22 @@ import 'package:stucap_admin/config/theming.dart';
 import 'package:stucap_admin/presentation/presentation.dart';
 import 'package:stucap_admin/statics/statics.dart';
 
-class DrawerScreen extends StatelessWidget {
+class DrawerScreen extends StatefulWidget {
   const DrawerScreen(
-      {Key? key,
-      this.onL0Pressed,
-      this.onL1Pressed,
-      this.onL2Pressed,
-      this.onL3Pressed,
-      this.onM1Pressed,
-      this.onM2Pressed, this.isL0, this.isL1, this.isL2, this.isL3, this.isM1, this.isM2, this.isManagL0, this.onManagL0Pressed,
-      })
+      {Key? key,})
       : super(key: key);
 
-  final VoidCallback? onL0Pressed;
-  final VoidCallback? onL1Pressed;
-  final VoidCallback? onL2Pressed;
-  final VoidCallback? onL3Pressed;
-  final VoidCallback? onM1Pressed;
-  final VoidCallback? onM2Pressed;
-  final bool? isL0;
-  final bool? isL1;
-  final bool? isL2;
-  final bool? isL3;
-  final bool? isM1;
-  final bool? isM2;
+  @override
+  State<DrawerScreen> createState() => _DrawerScreenState();
+}
 
-  final bool? isManagL0;
-  final VoidCallback? onManagL0Pressed;
+class _DrawerScreenState extends State<DrawerScreen> {
+
+  @override
+  void initState() {
+    context.read<DrawerCubit>().selectIndex(0);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -102,7 +91,6 @@ class DrawerScreen extends StatelessWidget {
                                   title: DataValues.drawerDescription1,
                                   onPressed: (){
                                     context.read<DrawerCubit>().selectIndex(0);
-                                    print('################################# $state');
                                   },
                                 );
                               }

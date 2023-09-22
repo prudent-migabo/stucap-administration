@@ -4,20 +4,23 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class StudentModel{
   String? avatar;
+  String? firstName;
   String? middleName;
   String? lastName;
   String? promotion;
   bool? presenceStatus;
   double? academicFees;
   bool? inscriptionStatus;
-  Timestamp? createdAt;
+  int? createdAt;
   String? studentID;
   String? sex;
-  String? qrCode;
-
+  String? birthDay;
+  String? devise;
+  String? address;
 //<editor-fold desc="Data Methods">
   StudentModel({
     this.avatar,
+    this.firstName,
     this.middleName,
     this.lastName,
     this.promotion,
@@ -27,20 +30,26 @@ class StudentModel{
     this.createdAt,
     this.studentID,
     this.sex,
-    this.qrCode,
+    this.birthDay,
+    this.devise,
+    this.address,
   });
 
 
   Map<String, dynamic> toMap() {
     return {
       'avatar': avatar,
+      'firstName': firstName,
       'middleName': middleName,
       'lastName': lastName,
       'promotion': promotion,
       'presenceStatus': presenceStatus,
       'academicFees': academicFees,
       'inscriptionStatus': inscriptionStatus,
+      'birthDay': birthDay,
       'sex': sex,
+      'devise': devise,
+      'address': address,
       'createdAt': DateTime.now().millisecondsSinceEpoch,
     };
   }
@@ -49,15 +58,18 @@ class StudentModel{
     Map map = doc.data()! as Map;
     return StudentModel(
       avatar: map['avatar'] ?? '',
+      firstName: map['firstName'] ?? '',
       middleName: map['middleName'] ?? '',
       lastName: map['lastName'] ?? '',
       promotion: map['promotion'] ?? '',
       presenceStatus: map['presenceStatus'] ?? false,
-      academicFees: map['academicFees'] ?? 0.0,
+      academicFees: map['academicFees'] + 0.0 ?? 0.0,
       inscriptionStatus: map['inscriptionStatus'] ?? false,
       createdAt: map['createdAt'] ?? 0,
       sex: map['sex'] ?? '',
-      qrCode: map['qrCode'] ?? '',
+      birthDay: map['birthDay'] ?? '',
+      devise: map['devise'] ?? '',
+      address: map['address'] ?? '',
       studentID: doc.id,
     );
   }

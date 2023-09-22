@@ -9,7 +9,7 @@ class AuthRepository{
 
   ///Login user to firebase
   Future login({required String email, required String password}) async {
-       await auth!.signInWithEmailAndPassword(
+       await auth.signInWithEmailAndPassword(
           email: email, password: password);
   }
 

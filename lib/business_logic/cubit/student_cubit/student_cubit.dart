@@ -15,9 +15,13 @@ class StudentCubit extends Cubit<StudentState> {
 
   StreamSubscription<List<StudentModel>> getStudentsMonitor() {
     return subscription =
-        StudentsRepository().listRegisteredStudents().listen((event) {
+        StudentsRepository().getListStudents().listen((event) {
       emit(state.copyWith(students: event));
     });
+  }
+
+  void initial (){
+    emit(StudentState.initial());
   }
 
   Future<void> createStudent(StudentModel studentModel) async {

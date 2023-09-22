@@ -9,21 +9,14 @@ import '../../../statics/constants.dart';
 
 class WelcomeScreen extends StatefulWidget {
   static const String routeName = '/WelcomeScreen';
-   WelcomeScreen({Key? key}) : super(key: key);
+
+  WelcomeScreen({Key? key}) : super(key: key);
 
   @override
   State<WelcomeScreen> createState() => _WelcomeScreenState();
 }
 
 class _WelcomeScreenState extends State<WelcomeScreen> {
-  bool isL0 = false;
-  bool isL1 = false;
-  bool isL2 = false;
-  bool isL3 = false;
-  bool isM1 = false;
-  bool isM2 = false;
-
-  bool isManagL0 = false;
 
   @override
   Widget build(BuildContext context) {
@@ -32,42 +25,42 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
       body: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-           Expanded(
-              child: DrawerScreen(
-                isL0: isL0,
-                isL1: isL1,
-                isL2: isL2,
-                isL3: isL3,
-                isM1: isM1,
-                isM2: isM2,
-                isManagL0: isManagL0,
-                onL0Pressed: (){
-                  setState(() {
-                    isL0 = !isL0;
-                  });
-                },
-                onL1Pressed: (){
-                  setState(() {
-                    isL1 = true;
-                  });
-                },
-                onManagL0Pressed: (){
-                  setState(() {
-                    isManagL0 = !isManagL0;
-                  });
-                },
-              ),
+          Expanded(
+            child: DrawerScreen(),
           ),
           homeExpandedSpacer,
-            Builder(
-              builder: (context) {
-                final state = context.select((DrawerCubit cubit) => cubit.state);
-                return Expanded(
-                  flex: 3,
-                    child: state == 'L1' ? ListRegisteredStudentScreen() : state == 'MGL0' ? HomeScreenSection() : Container(),);
-              }
-            ),
-                // child: isL0 ? ListRegisteredStudentScreen() : isManagL0? HomeScreen() :  Container()),
+          Builder(builder: (context) {
+            final state = context.select((DrawerCubit cubit) => cubit.state);
+            return Expanded(
+              flex: 3,
+              child: state == 'L0'
+                  ? const ListRegisteredStudentScreen()
+                  : state == 'L1'
+                  ? const ListRegisteredStudentScreen()
+                  : state == 'L2'
+                  ? const ListRegisteredStudentScreen()
+                  : state == 'L3'
+                  ? const ListRegisteredStudentScreen()
+                  : state == 'M1'
+                  ? const ListRegisteredStudentScreen()
+                  : state == 'M2'
+                  ? const ListRegisteredStudentScreen()
+                  : state == 'MGL0'
+                  ? const HomeScreenSection()
+                  : state == 'MGL1'
+                  ? const HomeScreenSection()
+                  : state == 'MGL2'
+                  ? const HomeScreenSection()
+                  : state == 'MGL3'
+                  ? const HomeScreenSection()
+                  : state == 'MGM1'
+                  ? const HomeScreenSection()
+                  : state == 'MGM2'
+                  ? const HomeScreenSection()
+                      : Container(),
+            );
+          }),
+          // child: isL0 ? ListRegisteredStudentScreen() : isManagL0? HomeScreen() :  Container()),
           // const Expanded(
           //   flex: 3,
           //     child: HomeScreen()),
